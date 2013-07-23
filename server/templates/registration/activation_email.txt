@@ -1,0 +1,1 @@
+To activate your account, go here: http://bricabracket.com/accounts/activate/{{ activation_key }}/

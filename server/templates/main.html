@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block head_block %}
+
+<script>
+  displaying_query_id = {{ from }} ;
+
+  // once every 24 hours, hit the server requesting a new random page to display
+  NEW_RANDOM_PERIOD_MS = 60*1000*60*24;
+  // NEW_RANDOM_PERIOD_MS = 1000;
+
+  // once every hour, ask the server if I should be displaying a
+  // reserved page
+  CHECK_RESERVED_PAGE_PERIOD_MS = 60*1000*60;
+
+  // url to go to to query for new 
+  NEW_RANDOM_URL = '{% url next_url %}';
+  RESERVED_URL = '{% url check_reserved %}';
+
+  RESOURCE_URL = '{% url resource_url %}';
+  
+  random_url = '';
+  reserved_url = '';
+  
+</script>
+<script type="text/javascript" src="{{ STATIC_URL }}/main_display.js">
+</script>
+
+<script>
+  $(document).ready( main_ready );
+</script>
+
+{% endblock head_block %}
+
+
+
+{% block body_block %}
+<div id="main_display" style="background-color:white;">
+</div>
+{% endblock body_block %}

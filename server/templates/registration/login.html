@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head_block %}
+{% endblock head_block %}
+
+{% block body_block %}
+
+  {% if not user.is_authenticated %}
+  <p>
+    {{ msg }}
+  </p>
+  {% endif %}
+  
+
+    <form action="." method="post"        
+      {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+      {% csrf_token %}      
+      {{ form.as_p }}
+      <input type="submit" value="Submit" />
+    </form>
+      
+  <p>
+    Don't have an account?  Register <a href="{% url registration_register %}">here</a>.
+  </p>
+  
+{% endblock body_block %}
+
